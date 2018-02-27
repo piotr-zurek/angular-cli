@@ -97,12 +97,6 @@ export function getCommonConfig(wco: WebpackConfigOptions) {
 
       if (outputRelativeOutput.startsWith('..') || path.isAbsolute(outputRelativeOutput)) {
 
-        const projectRelativeOutput = path.relative(projectRoot, absoluteAssetOutput);
-        if (projectRelativeOutput.startsWith('..') || path.isAbsolute(projectRelativeOutput)) {
-          const message = 'An asset cannot be written to a location outside the project.';
-          throw new SilentError(message);
-        }
-
         if (!asset.allowOutsideOutDir) {
           const message = 'An asset cannot be written to a location outside of the output path. '
                         + 'You can override this message by setting the `allowOutsideOutDir` '
